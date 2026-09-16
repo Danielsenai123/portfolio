@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/perfil-style.css">
+
+    <title>Meu Perfil</title>
+</head>
+
+<body>
+
+    <div class="perfil-container">
+
+        <div class="perfil-header">
+
+            <div class="foto-perfil">
+                👤
+            </div>
+
+            <h1>Meu Perfil</h1>
+
+            <p id="usuario-logado">
+                Carregando informações...
+            </p>
+
+        </div>
+
+
+        <div class="perfil-info">
+
+            <div class="campo">
+                <span>Nome</span>
+                <strong id="nome-usuario">Carregando...</strong>
+            </div>
+
+            <div class="campo">
+                <span>E-mail</span>
+                <strong id="email-usuario">Carregando...</strong>
+            </div>
+
+            <div class="campo">
+                <span>Tipo de usuário</span>
+                <strong id="tipo-usuario">Carregando...</strong>
+            </div>
+
+            <div class="campo">
+                <span>Data de criação</span>
+                <strong id="data-criacao">Em breve</strong>
+            </div>
+
+        </div>
+
+
+        <div class="perfil-botoes">
+
+            <button onclick="editarPerfil()">
+                Editar perfil
+            </button>
+
+            <button onclick="alterarSenha()">
+                Alterar senha
+            </button>
+
+            <button class="btn-sair" onclick="logout()">
+                Sair da conta
+            </button>
+
+        </div>
+
+
+        <a class="voltar" href="/index.html">
+            ← Voltar para o portfólio
+        </a>
+
+    </div>
+
+
+    <script src="/js/perfil.js"></script>
+
+</body>
+
+</html>

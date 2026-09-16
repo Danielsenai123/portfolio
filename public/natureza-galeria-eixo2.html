@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Atividades Eixo 2 - Natureza</title>
+    <style>
+        .galeria-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px; 
+        }
+        .galeria-container img {
+            width: 300px;  
+            height: 200px; 
+            object-fit: cover; 
+            border-radius: 8px; 
+            border: 1px solid #ffd700; 
+            transition: transform 0.2s; 
+        }
+        .item-galeria {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .item-galeria p {
+            margin-top: 10px;
+            text-align: center;
+        }
+        .galeria-container img:hover {
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+
+        .favorita-label {
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: bold;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Sobre mim</a></li>
+                <li><a href="project.html">Projetos</a></li>
+                <li><a href="contact.html">Contatos</a></li>
+                <li><a href="areas.html">Áreas do Conhecimento</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Atividades Natureza - (Eixo 2)</h1>
+        <p>Veja abaixo às atividades práticas de Ciências da Natureza.</p>
+        <div class="galeria-container">
+            <div class="item-galeria">
+                <a href="./img/atividade mapa mental função oxigenada eixo 2.png" target="_blank">
+                    <img src="img/atividade mapa mental função oxigenada eixo 2.png" alt="Imagem 1 da atividade de Natureza">
+                </a>
+                <p>Data: 15/04/2026</p>
+            </div>
+            <div class="item-galeria">
+                <a href="img/atividade mapa mental sobre funções nitrogenadas eixo 2 natureza.png" target="_blank">
+                    <img src="img/atividade mapa mental sobre funções nitrogenadas eixo 2 natureza.png">
+                </a>
+                <p>Data: 06/04/2026</p>
+            </div>
+            <div class="item-galeria">
+                <a href="img/atividade mapa mental sobre as as principais teorias evolucionistas eixo 2 natureza.png" target="_blank">
+                    <img src="img/atividade mapa mental sobre as as principais teorias evolucionistas eixo 2 natureza.png" alt="Imagem 3 da atividade de Natureza">
+                </a>
+                <p>Data: 07/04/2026</p>
+            </div>
+<div class="item-galeria favorita">
+    <a href="img/atividade slides sobre a teoria da evolução eixo 2.png" target="_blank">
+        <img src="img/atividade slides sobre a teoria da evolução eixo 2.png" alt="Minha atividade favorita de Natureza">
+    </a>
+
+    <p>Data: 27/05/2026</p>
+
+    <span class="favorita-label">⭐ Minha atividade escolhida</span>
+</div>
+
+        </div>
+    </main>
+</body>
+</html>

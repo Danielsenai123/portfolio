@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Daniel Leal - Portfolio</title>
+
+    <style>
+        footer img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .center img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .logout-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #ffd700;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #frase-rotativa {
+            color: #ffd700;
+            height: 1.6em;
+            transition: opacity 0.5s ease-in-out;
+            font-weight: normal;
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        #toggle-card {
+            cursor: pointer;
+            display: inline-block;
+            color: #ffd700;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+        #toggle-card:hover {
+            filter: brightness(1.2);
+        }
+    </style>
+</head>
+
+<body onload="verificarLogin()">
+
+<header>
+    <button class="logout-btn" onclick="logout()">Sair</button>
+
+    <nav>
+        <ul>
+<li><a href="index.html">Sobre mim</a></li>
+<li><a href="project.html">Projetos</a></li>
+<li><a href="contact.html">Contatos</a></li>
+<li><a href="areas.html">Áreas do Conhecimento</a></li>
+<li><a href="perfil.html">Meu Perfil</a></li>
+        </ul>
+    </nav>
+
+    <div class="center">
+        <img src="img/Foto perfil.jpg" ondragstart="return false;" oncontextmenu="return false;">
+    </div>
+
+    <p id="usuario-logado"></p>
+    <h1>Daniel Leal</h1>
+    <h2>Desenvolvedor</h2>
+    <h2 id="frase-rotativa">Transformando ideias em resultados</h2>
+    <hr>
+</header>
+
+<main>
+    <section>
+        <h3>Sobre Mim</h3>
+        <p>Olá! Sou Daniel, um profissional apaixonado por área de administração, vendas, negócios, design no geral, em busca do sucesso.</p>
+    </section>
+
+    <section>
+        <h3>Historia</h3>
+        <p>Tudo começou com um proposito de ser diferente... Tudo começou quando eu tinha dos 15 quase para os 16 anos, esse jeito de pensar diferente é uma sensação incrivel mais também bem dificil de suportar, poucas pessoas aguentam o processo que é muito doloroso mais também o final é gratificante e feliz, quando eu conseguir vou ajudar todos que me ajudaram e quem eu gosto, e isso é certo pois com Deus tudo é possível com a ajuda dele, vou em busca dos meus sonhos.</p>
+    </section>
+
+    <section>
+        <h3>Habilidades</h3>
+        <p>Visão Sistêmica, Planejamento e Execução, Análise de Processos, Gestão de Equipes, Comunicação Assertiva, Gestão Financeira.</p>
+    </section>
+
+    <section>
+        
+        <div class="titulos-expandir">
+
+    <h3 id="toggle-card">Cartão de Visita ▼</h3>
+
+    <h3 id="toggle-ppe">Plano Pessoal de Estudos ▼</h3>
+
+</div>
+        
+        <div id="business-card-content" style="display: none;">
+            <div class="business-card-container">
+                <div class="business-card">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h2>Daniel Leal</h2>
+                            <span>Desenvolvedor & Administrador</span>
+                        </div>
+                        <hr class="card-divider">
+                        <div class="card-body">
+                            <p><strong>📧</strong> danielleal3451@gmail.com</p>
+                            <p><strong>📱</strong> (89) 99465-9686</p>
+                            <p><strong>📍</strong> Piauí, Brasil</p>
+                        </div>
+                        <div class="card-footer">
+                            <span>Transformando ideias em resultados</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id="ppe-content" style="display: none;">
+
+    <section class="ppe-section">
+
+        <div class="ppe-container">
+
+            <div class="ppe-header">DIA DA SEMANA</div>
+            <div class="ppe-header">1ª HORA LIVRE</div>
+            <div class="ppe-header">2ª HORA LIVRE</div>
+            <div class="ppe-header">NOITE (2H)</div>
+            <div class="ppe-header">OBSERVAÇÕES</div>
+
+            <div class="ppe-day">SEGUNDA</div>
+            <div class="ppe-box destaque">Informática / TI</div>
+            <div class="ppe-box">Português</div>
+            <div class="ppe-box">Administração</div>
+            <div class="ppe-box">Início leve focado em tecnologia</div>
+
+            <div class="ppe-day">TERÇA</div>
+            <div class="ppe-box">Matemática Básica</div>
+            <div class="ppe-box">Exercícios</div>
+            <div class="ppe-box destaque">Design</div>
+            <div class="ppe-box">Criatividade e prática</div>
+
+            <div class="ppe-day">QUARTA</div>
+            <div class="ppe-box destaque">Informática / TI</div>
+            <div class="ppe-box">Atualidades</div>
+            <div class="ppe-box">Português</div>
+            <div class="ppe-box">Alternância leve</div>
+
+            <div class="ppe-day">QUINTA</div>
+            <div class="ppe-box">Administração</div>
+            <div class="ppe-box">Revisão</div>
+            <div class="ppe-box destaque">Design</div>
+            <div class="ppe-box">Aprendizado visual</div>
+
+            <div class="ppe-day">SEXTA</div>
+            <div class="ppe-box destaque">Informática / TI</div>
+            <div class="ppe-box">Matemática</div>
+            <div class="ppe-box">Leitura leve</div>
+            <div class="ppe-box">Fechamento da semana</div>
+
+            <div class="ppe-day">SÁBADO</div>
+            <div class="ppe-box">Projetos</div>
+            <div class="ppe-box">Revisão</div>
+            <div class="ppe-box">Livre</div>
+            <div class="ppe-box">Sem pressão</div>
+
+            <div class="ppe-day">DOMINGO</div>
+            <div class="ppe-box">Leitura</div>
+            <div class="ppe-box">Organização</div>
+            <div class="ppe-box">Livre</div>
+            <div class="ppe-box">Descanso mental</div>
+
+        </div>
+
+    </section>
+
+</div>
+</main>
+
+<footer>
+    <div class="footer-links">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+            <img src="./img/logo instagram blue.jpg" alt="Instagram">
+            <p>Instagram</p>
+        </a>
+        <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
+            <img src="./img/logo yt blue.png" alt="Youtube">
+            <p>Youtube</p>
+        </a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+            <img src="./img/logo facebook blue.jpg" alt="Facebook">
+            <p>Facebook</p>
+        </a>
+    </div>
+
+<div class="copyright">
+    <p> Orientador (a) : Cleiton Jérico, Regiane Leal </p>
+    <p>&copy; <span id="ano-atual"></span> Dan L. Todos os direitos reservados.</p>
+</div>
+</footer>
+
+<script src="/js/script.js"></script>
+
+<script>
+document.getElementById('toggle-card').addEventListener('click', function() {
+    const card = document.getElementById('business-card-content');
+    if (card.style.display === 'none') {
+        card.style.display = 'block';
+        this.innerHTML = 'Cartão de Visita ▲';
+    } else {
+        card.style.display = 'none';
+        this.innerHTML = 'Cartão de Visita ▼';
+    }
+});
+</script>
+
+<script>
+
+document.getElementById('toggle-ppe').addEventListener('click', function() {
+
+    const ppe = document.getElementById('ppe-content');
+
+    if (ppe.style.display === 'none') {
+
+        ppe.style.display = 'block';
+        this.innerHTML = 'Plano Pessoal de Estudos ▲';
+
+    } else {
+
+        ppe.style.display = 'none';
+        this.innerHTML = 'Plano Pessoal de Estudos ▼';
+    }
+
+});
+
+</script>
+
+</body>
+</html>
