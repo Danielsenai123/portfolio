@@ -1,16 +1,16 @@
 // ==========================================
-// 1. FUNÇÃO DE LOGIN (Chamada pelo login.html)
+// 1. FUNÇÃO DE LOGIN (Chamada no login.html)
 // ==========================================
 async function logar(event) {
     if (event) event.preventDefault();
 
-    const email = document.getElementById("email")?.value.trim();
-    const senha = document.getElementById("senha")?.value;
+    const emailInput = document.getElementById("email");
+    const senhaInput = document.getElementById("senha");
 
-    if (!email || !senha) {
-        alert("Preencha o e-mail e a senha.");
-        return;
-    }
+    if (!emailInput || !senhaInput) return;
+
+    const email = emailInput.value.trim();
+    const senha = senhaInput.value;
 
     if (!window.supabaseClient) {
         alert("Erro ao conectar com o Supabase.");
@@ -28,8 +28,8 @@ async function logar(event) {
         return;
     }
 
-    // Login bem-sucedido: Redireciona para o index
-    window.location.href = "./index.html";
+    // LOGIN SUCESSO -> Vai para a página do index no repositório
+    window.location.href = "index.html";
 }
 
 
@@ -53,44 +53,42 @@ function alternarSenha() {
 
 
 // ==========================================
-// 3. LOGOUT (BOTÃO SAIR DO INDEX)
+// 3. LOGOUT (BOTÃO SAIR)
 // ==========================================
 async function logout() {
     if (window.supabaseClient) {
         await window.supabaseClient.auth.signOut();
     }
-    window.location.href = "./login.html";
+    window.location.href = "login.html";
 }
 
 
 // ==========================================
-// 4. VERIFICAÇÃO DE ACESSO AO INDEX
+// 4. PONTE / VERIFICAÇÃO DE ACESSO
 // ==========================================
 async function verificarAcesso() {
-    const paginaAtual = window.location.pathname;
+    const caminho = window.location.pathname;
 
-    // Se estiver na página de login ou cadastro, não faz a verificação
-    if (paginaAtual.includes("login.html") || paginaAtual.includes("cadastro.html")) {
+    // Se já estiver no login ou no cadastro, ignora
+    if (caminho.includes("login.html") || caminho.includes("cadastro.html")) {
         return;
     }
 
     if (!window.supabaseClient) return;
 
-    // Checa se existe uma sessão ativa
     const { data } = await window.supabaseClient.auth.getSession();
 
-    // Se NÃO estiver logado, manda para o login
+    // Se NÃO estiver logado, envia para a página de login
     if (!data || !data.session) {
-        window.location.href = "./login.html";
+        window.location.href = "login.html";
         return;
     }
 
-    // Se estiver logado, exibe o e-mail (se o elemento existir)
+    // Se estiver logado, exibe o e-mail
     const nomeUsuario = document.getElementById("usuario-logado");
     if (nomeUsuario && data.session.user) {
         nomeUsuario.textContent = `Olá, ${data.session.user.email}!`;
     }
 }
 
-// Executa a verificação assim que a página carregar
 document.addEventListener("DOMContentLoaded", verificarAcesso);
