@@ -8,16 +8,15 @@ async function logar(event) {
     const senha = document.getElementById("senha")?.value;
 
     if (!email || !senha) {
-        alert("Preencha e-mail e senha.");
+        alert("Preencha o e-mail e a senha.");
         return;
     }
 
     if (!window.supabaseClient) {
-        alert("Erro ao conectar ao servidor Supabase.");
+        alert("Aguarde o carregamento do Supabase e tente novamente.");
         return;
     }
 
-    // Autentica o usuário
     const { data, error } = await window.supabaseClient.auth.signInWithPassword({
         email: email,
         password: senha
@@ -28,7 +27,7 @@ async function logar(event) {
         return;
     }
 
-    // Redireciona para o index após login correto
+    // Redireciona diretamente para o index
     window.location.href = "index.html";
 }
 
@@ -71,7 +70,7 @@ async function logout() {
 async function verificarAcesso() {
     const caminho = window.location.pathname;
 
-    // Se estiver no login ou cadastro, ignora a checagem
+    // Se estiver no login ou cadastro, não interrompe
     if (caminho.includes("login.html") || caminho.includes("cadastro.html")) {
         return;
     }
@@ -80,13 +79,13 @@ async function verificarAcesso() {
 
     const { data } = await window.supabaseClient.auth.getSession();
 
-    // Se NÃO estiver logado e tentar abrir o index, manda para o login
+    // Se NÃO estiver logado, redireciona obrigatoriamente para o login
     if (!data || !data.session) {
         window.location.href = "login.html";
         return;
     }
 
-    // Se estiver logado, exibe o e-mail
+    // Exibe o email do utilizador no topo caso esteja logado
     const nomeUsuario = document.getElementById("usuario-logado");
     if (nomeUsuario && data.session.user) {
         nomeUsuario.textContent = `Olá, ${data.session.user.email}!`;
