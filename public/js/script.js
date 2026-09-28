@@ -1,4 +1,55 @@
 // ==============================
+// FUNÇÃO DE LOGIN (CHAMADA PELO FORMULÁRIO)
+// ==============================
+
+async function logar(event) {
+    if (event) {
+        event.preventDefault(); // Impede o recarregamento da página ao enviar o formulário
+    }
+
+    const emailInput = document.getElementById("email");
+    const senhaInput = document.getElementById("senha");
+
+    if (!emailInput || !senhaInput) {
+        console.error("Campos de email ou senha não encontrados.");
+        return;
+    }
+
+    const email = emailInput.value;
+    const senha = senhaInput.value;
+
+    try {
+        if (!window.supabaseClient) {
+            console.error("Supabase não carregado.");
+            alert("Erro na conexão com o servidor. Tente novamente em instantes.");
+            return;
+        }
+
+        // Tenta autenticar o usuário com o Supabase
+        const { data, error } = await window.supabaseClient.auth.signInWithPassword({
+            email: email,
+            password: senha,
+        });
+
+        if (error) {
+            console.error("Erro no login:", error.message);
+            alert("Email ou senha incorretos.");
+            return;
+        }
+
+        console.log("Login realizado com sucesso!", data);
+
+        // REDIRECIONA PARA A PÁGINA INICIAL (INDEX) NO GITHUB PAGES
+        window.location.href = "https://danielsenai123.github.io/portfolio/index.html";
+
+    } catch (erro) {
+        console.error("Erro inesperado ao realizar login:", erro);
+        alert("Erro ao tentar conectar. Tente novamente.");
+    }
+}
+
+
+// ==============================
 // MOSTRAR / OCULTAR SENHA
 // ==============================
 
@@ -61,9 +112,8 @@ async function logout() {
             return;
         }
 
-        // IMPORTANTE:
-        // caminho relativo para o GitHub Pages
-        window.location.href = "./login.html";
+        // REDIRECIONA PARA O LOGIN APÓS SAIR
+        window.location.href = "https://danielsenai123.github.io/portfolio/login.html";
 
     } catch (erro) {
 
@@ -120,7 +170,7 @@ async function verificarLogin() {
 
 
         // ==============================
-        // SEM SESSÃO
+        // SEM SESSÃO -> REDIRECIONA PARA LOGIN
         // ==============================
 
         if (!session) {
@@ -129,10 +179,8 @@ async function verificarLogin() {
                 "Nenhuma sessão encontrada."
             );
 
-            // IMPORTANTE:
-            // caminho relativo para /portfolio/
             window.location.href =
-                "./login.html";
+                "https://danielsenai123.github.io/portfolio/login.html";
 
             return;
         }
@@ -229,7 +277,7 @@ async function verificarLogin() {
 
 
 // ==============================
-// INICIAR VERIFICAÇÃO
+// INICIAR VERIFICAÇÃO NA PÁGINA INICIAL
 // ==============================
 
 document.addEventListener(
@@ -239,33 +287,16 @@ document.addEventListener(
         const caminho =
             window.location.pathname;
 
-        /*
-         * No GitHub Pages o site está em:
-         *
-         * /portfolio/
-         *
-         * Quando acessamos:
-         *
-         * https://danielsenai123.github.io/portfolio/
-         *
-         * o pathname termina com "/".
-         *
-         * Também aceitamos:
-         *
-         * /portfolio/index.html
-         */
-
         const pagina =
             caminho.split("/").pop();
 
-
+        // Executa a verificação apenas no index.html (não no login.html)
         if (
             pagina === "" ||
             pagina === "index.html"
         ) {
-
             verificarLogin();
         }
 
     }
-);
+);git add .
