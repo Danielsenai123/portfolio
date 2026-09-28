@@ -1,5 +1,5 @@
 // ==========================================
-// 1. FUNÇÃO DE LOGIN (Chamada no login.html)
+// 1. FUNÇÃO DE LOGIN (Chamada pelo formulário do login.html)
 // ==========================================
 async function logar(event) {
     if (event) event.preventDefault();
@@ -7,7 +7,10 @@ async function logar(event) {
     const emailInput = document.getElementById("email");
     const senhaInput = document.getElementById("senha");
 
-    if (!emailInput || !senhaInput) return;
+    if (!emailInput || !senhaInput) {
+        console.error("Campos de e-mail ou senha não encontrados.");
+        return;
+    }
 
     const email = emailInput.value.trim();
     const senha = senhaInput.value;
@@ -28,7 +31,7 @@ async function logar(event) {
         return;
     }
 
-    // LOGIN SUCESSO -> Vai para a página do index no repositório
+    // Login bem-sucedido: Redireciona para o index
     window.location.href = "index.html";
 }
 
@@ -53,42 +56,48 @@ function alternarSenha() {
 
 
 // ==========================================
-// 3. LOGOUT (BOTÃO SAIR)
+// 3. LOGOUT (BOTÃO SAIR DO INDEX)
 // ==========================================
 async function logout() {
     if (window.supabaseClient) {
         await window.supabaseClient.auth.signOut();
     }
+    // Limpa dados de sessão guardados localmente
+    localStorage.clear();
+    sessionStorage.clear();
+    
     window.location.href = "login.html";
 }
 
 
 // ==========================================
-// 4. PONTE / VERIFICAÇÃO DE ACESSO
+// 4. VERIFICAÇÃO DE ACESSO AO INDEX
 // ==========================================
 async function verificarAcesso() {
     const caminho = window.location.pathname;
 
-    // Se já estiver no login ou no cadastro, ignora
+    // Se estiver na página de login ou cadastro, não interrompe
     if (caminho.includes("login.html") || caminho.includes("cadastro.html")) {
         return;
     }
 
     if (!window.supabaseClient) return;
 
+    // Obtém a sessão ativa
     const { data } = await window.supabaseClient.auth.getSession();
 
-    // Se NÃO estiver logado, envia para a página de login
+    // Se NÃO houver usuário logado, redireciona para a página de login
     if (!data || !data.session) {
         window.location.href = "login.html";
         return;
     }
 
-    // Se estiver logado, exibe o e-mail
+    // Se estiver logado, exibe o e-mail no cabeçalho
     const nomeUsuario = document.getElementById("usuario-logado");
     if (nomeUsuario && data.session.user) {
         nomeUsuario.textContent = `Olá, ${data.session.user.email}!`;
     }
 }
 
+// Executa a verificação assim que a página carregar
 document.addEventListener("DOMContentLoaded", verificarAcesso);
