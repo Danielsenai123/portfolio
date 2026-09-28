@@ -1,57 +1,41 @@
-// ==============================
-// FUNÇÃO DE LOGIN (CHAMADA PELO FORMULÁRIO DO LOGIN.HTML)
-// ==============================
-
+// ==========================================
+// 1. FUNÇÃO DE LOGIN (Chamada pelo login.html)
+// ==========================================
 async function logar(event) {
-    if (event) {
-        event.preventDefault(); // Evita recarregar a página
-    }
+    if (event) event.preventDefault();
 
-    const emailInput = document.getElementById("email");
-    const senhaInput = document.getElementById("senha");
+    const email = document.getElementById("email")?.value.trim();
+    const senha = document.getElementById("senha")?.value;
 
-    if (!emailInput || !senhaInput) {
-        console.error("Campos de email ou senha não encontrados.");
+    if (!email || !senha) {
+        alert("Preencha o e-mail e a senha.");
         return;
     }
 
-    const email = emailInput.value.trim();
-    const senha = senhaInput.value;
-
-    try {
-        if (!window.supabaseClient) {
-            alert("Erro: Supabase não foi carregado corretamente.");
-            return;
-        }
-
-        // Tenta fazer o login no Supabase
-        const { data, error } = await window.supabaseClient.auth.signInWithPassword({
-            email: email,
-            password: senha,
-        });
-
-        if (error) {
-            console.error("Erro no login:", error.message);
-            alert("Email ou senha incorretos.");
-            return;
-        }
-
-        console.log("Login realizado com sucesso!", data);
-
-        // REDIRECIONA PARA O INDEX APÓS O LOGIN
-        window.location.href = "./index.html";
-
-    } catch (erro) {
-        console.error("Erro no login:", erro);
-        alert("Ocorreu um erro ao tentar conectar.");
+    if (!window.supabaseClient) {
+        alert("Erro ao conectar com o Supabase.");
+        return;
     }
+
+    // Autentica no Supabase
+    const { data, error } = await window.supabaseClient.auth.signInWithPassword({
+        email: email,
+        password: senha
+    });
+
+    if (error) {
+        alert("E-mail ou senha incorretos.");
+        return;
+    }
+
+    // Login bem-sucedido: Redireciona para o index
+    window.location.href = "./index.html";
 }
 
 
-// ==============================
-// MOSTRAR / OCULTAR SENHA
-// ==============================
-
+// ==========================================
+// 2. MOSTRAR / OCULTAR SENHA
+// ==========================================
 function alternarSenha() {
     const campoSenha = document.getElementById("senha");
     const icone = document.getElementById("icone-olho");
@@ -68,96 +52,45 @@ function alternarSenha() {
 }
 
 
-// ==============================
-// LOGOUT (BOTAO SAIR)
-// ==============================
-
+// ==========================================
+// 3. LOGOUT (BOTÃO SAIR DO INDEX)
+// ==========================================
 async function logout() {
-    try {
-        if (!window.supabaseClient) return;
-
+    if (window.supabaseClient) {
         await window.supabaseClient.auth.signOut();
-
-        // REDIRECIONA PARA A TELA DE LOGIN AO SAIR
-        window.location.href = "./login.html";
-
-    } catch (erro) {
-        console.error("Erro no logout:", erro);
-        alert("Erro ao sair da conta.");
     }
+    window.location.href = "./login.html";
 }
 
 
-// ==============================
-// VERIFICAR SE O USUÁRIO ESTÁ LOGADO
-// ==============================
+// ==========================================
+// 4. VERIFICAÇÃO DE ACESSO AO INDEX
+// ==========================================
+async function verificarAcesso() {
+    const paginaAtual = window.location.pathname;
 
-async function verificarLogin() {
-    try {
-        if (!window.supabaseClient) {
-            console.error("Supabase não carregado.");
-            return;
-        }
+    // Se estiver na página de login ou cadastro, não faz a verificação
+    if (paginaAtual.includes("login.html") || paginaAtual.includes("cadastro.html")) {
+        return;
+    }
 
-        const { data, error } = await window.supabaseClient.auth.getSession();
+    if (!window.supabaseClient) return;
 
-        if (error) {
-            console.error("Erro ao recuperar sessão:", error);
-            window.location.href = "./login.html";
-            return;
-        }
+    // Checa se existe uma sessão ativa
+    const { data } = await window.supabaseClient.auth.getSession();
 
-        const session = data.session;
-
-        // SE NÃO TIVER SESSÃO (NÃO ESTIVER LOGADO), VAI PARA O LOGIN IMMEDIATAMENTE
-        if (!session) {
-            console.log("Usuário não autenticado. Redirecionando para login.html...");
-            window.location.href = "./login.html";
-            return;
-        }
-
-        // SE TIVER SESSÃO, MOSTRA O USUÁRIO LOGADO
-        const user = session.user;
-        const nomeUsuario = document.getElementById("usuario-logado");
-
-        if (nomeUsuario) {
-            nomeUsuario.textContent = `Olá, ${user.email}!`;
-        }
-
-        // Buscar dados do perfil (opcional)
-        try {
-            const { data: perfil } = await window.supabaseClient
-                .from("perfis")
-                .select("nome")
-                .eq("id", user.id)
-                .maybeSingle();
-
-            if (perfil && perfil.nome && nomeUsuario) {
-                nomeUsuario.textContent = `Olá, ${perfil.nome}!`;
-            }
-        } catch (e) {
-            console.warn("Perfil não encontrado:", e);
-        }
-
-    } catch (erro) {
-        console.error("Erro na verificação de login:", erro);
+    // Se NÃO estiver logado, manda para o login
+    if (!data || !data.session) {
         window.location.href = "./login.html";
+        return;
+    }
+
+    // Se estiver logado, exibe o e-mail (se o elemento existir)
+    const nomeUsuario = document.getElementById("usuario-logado");
+    if (nomeUsuario && data.session.user) {
+        nomeUsuario.textContent = `Olá, ${data.session.user.email}!`;
     }
 }
 
-
-// ==============================
-// INICIALIZAÇÃO CONTROLADA
-// ==============================
-
-document.addEventListener("DOMContentLoaded", function () {
-    const pathname = window.location.pathname;
-
-    // Se estiver na página de login, não precisa verificar a sessão para evitar loop de redirecionamento
-    const ePaginaLogin = pathname.includes("login.html") || pathname.includes("cadastro.html");
-
-    if (!ePaginaLogin) {
-        // Em qualquer outra página (index.html, /portfolio/, etc), EXIGE que o usuário esteja logado!
-        verificarLogin();
-    }
-});
+// Executa a verificação assim que a página carregar
+document.addEventListener("DOMContentLoaded", verificarAcesso);
