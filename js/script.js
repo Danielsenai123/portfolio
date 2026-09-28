@@ -1,23 +1,23 @@
 // ==========================================
-// 1. FUNÇÃO DE LOGIN (Chamada no login.html)
+// 1. FUNÇÃO DE LOGIN
 // ==========================================
 async function logar(event) {
     if (event) event.preventDefault();
 
-    const emailInput = document.getElementById("email");
-    const senhaInput = document.getElementById("senha");
+    const email = document.getElementById("email")?.value.trim();
+    const senha = document.getElementById("senha")?.value;
 
-    if (!emailInput || !senhaInput) return;
-
-    const email = emailInput.value.trim();
-    const senha = senhaInput.value;
-
-    if (!window.supabaseClient) {
-        alert("Erro ao conectar com o Supabase. Aguarde alguns segundos e tente novamente.");
+    if (!email || !senha) {
+        alert("Preencha e-mail e senha.");
         return;
     }
 
-    // Autentica o utilizador no Supabase
+    if (!window.supabaseClient) {
+        alert("Erro ao conectar ao servidor Supabase.");
+        return;
+    }
+
+    // Autentica o usuário
     const { data, error } = await window.supabaseClient.auth.signInWithPassword({
         email: email,
         password: senha
@@ -28,7 +28,7 @@ async function logar(event) {
         return;
     }
 
-    // Redireciona imediatamente para o index.html após autenticação bem-sucedida
+    // Redireciona para o index após login correto
     window.location.href = "index.html";
 }
 
@@ -66,39 +66,31 @@ async function logout() {
 
 
 // ==========================================
-// 4. VERIFICAÇÃO AUTOMÁTICA DE SESSÃO E COMUNICAÇÃO
+// 4. VERIFICAÇÃO DE ACESSO
 // ==========================================
-function inicializarAutenticacao() {
+async function verificarAcesso() {
     const caminho = window.location.pathname;
-    const ePaginaLogin = caminho.includes("login.html") || caminho.includes("cadastro.html");
 
-    if (!window.supabaseClient) {
-        // Se a biblioteca ainda não carregou, tenta novamente em 100ms
-        setTimeout(inicializarAutenticacao, 100);
+    // Se estiver no login ou cadastro, ignora a checagem
+    if (caminho.includes("login.html") || caminho.includes("cadastro.html")) {
         return;
     }
 
-    // Escuta em tempo real o estado de autenticação do Supabase
-    window.supabaseClient.auth.onAuthStateChange((event, session) => {
-        if (!ePaginaLogin) {
-            // Se NÃO estiver logado e tentar aceder ao index.html, redireciona para login.html
-            if (!session) {
-                window.location.href = "login.html";
-            } else {
-                // Exibe o e-mail do utilizador no campo especificado
-                const nomeUsuario = document.getElementById("usuario-logado");
-                if (nomeUsuario && session.user) {
-                    nomeUsuario.textContent = `Olá, ${session.user.email}!`;
-                }
-            }
-        } else {
-            // Se JÁ estiver logado e tentar aceder ao login.html, redireciona para index.html
-            if (session && event === "SIGNED_IN") {
-                window.location.href = "index.html";
-            }
-        }
-    });
+    if (!window.supabaseClient) return;
+
+    const { data } = await window.supabaseClient.auth.getSession();
+
+    // Se NÃO estiver logado e tentar abrir o index, manda para o login
+    if (!data || !data.session) {
+        window.location.href = "login.html";
+        return;
+    }
+
+    // Se estiver logado, exibe o e-mail
+    const nomeUsuario = document.getElementById("usuario-logado");
+    if (nomeUsuario && data.session.user) {
+        nomeUsuario.textContent = `Olá, ${data.session.user.email}!`;
+    }
 }
 
-// Executa a inicialização imediatamente
-inicializarAutenticacao();
+document.addEventListener("DOMContentLoaded", verificarAcesso);
