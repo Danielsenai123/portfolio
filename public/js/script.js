@@ -1,10 +1,10 @@
 // ==============================
-// FUNÇÃO DE LOGIN (CHAMADA PELO FORMULÁRIO)
+// FUNÇÃO DE LOGIN (CHAMADA PELO FORMULÁRIO DO LOGIN.HTML)
 // ==============================
 
 async function logar(event) {
     if (event) {
-        event.preventDefault(); // Impede o recarregamento da página ao enviar o formulário
+        event.preventDefault(); // Evita recarregar a página
     }
 
     const emailInput = document.getElementById("email");
@@ -15,17 +15,16 @@ async function logar(event) {
         return;
     }
 
-    const email = emailInput.value;
+    const email = emailInput.value.trim();
     const senha = senhaInput.value;
 
     try {
         if (!window.supabaseClient) {
-            console.error("Supabase não carregado.");
-            alert("Erro na conexão com o servidor. Tente novamente em instantes.");
+            alert("Erro: Supabase não foi carregado corretamente.");
             return;
         }
 
-        // Tenta autenticar o usuário com o Supabase
+        // Tenta fazer o login no Supabase
         const { data, error } = await window.supabaseClient.auth.signInWithPassword({
             email: email,
             password: senha,
@@ -39,12 +38,12 @@ async function logar(event) {
 
         console.log("Login realizado com sucesso!", data);
 
-        // REDIRECIONA PARA A PÁGINA INICIAL (INDEX) NO GITHUB PAGES
-        window.location.href = "https://danielsenai123.github.io/portfolio/index.html";
+        // REDIRECIONA PARA O INDEX APÓS O LOGIN
+        window.location.href = "./index.html";
 
     } catch (erro) {
-        console.error("Erro inesperado ao realizar login:", erro);
-        alert("Erro ao tentar conectar. Tente novamente.");
+        console.error("Erro no login:", erro);
+        alert("Ocorreu um erro ao tentar conectar.");
     }
 }
 
@@ -54,249 +53,111 @@ async function logar(event) {
 // ==============================
 
 function alternarSenha() {
+    const campoSenha = document.getElementById("senha");
+    const icone = document.getElementById("icone-olho");
 
-    const campoSenha =
-        document.getElementById("senha");
-
-    const icone =
-        document.getElementById("icone-olho");
-
-    if (!campoSenha) {
-        return;
-    }
+    if (!campoSenha) return;
 
     if (campoSenha.type === "password") {
-
         campoSenha.type = "text";
-
-        if (icone) {
-            icone.style.opacity = "0.5";
-        }
-
+        if (icone) icone.style.opacity = "0.5";
     } else {
-
         campoSenha.type = "password";
-
-        if (icone) {
-            icone.style.opacity = "1";
-        }
+        if (icone) icone.style.opacity = "1";
     }
 }
 
 
 // ==============================
-// LOGOUT
+// LOGOUT (BOTAO SAIR)
 // ==============================
 
 async function logout() {
-
     try {
+        if (!window.supabaseClient) return;
 
-        if (!window.supabaseClient) {
-            console.error("Supabase não carregado.");
-            return;
-        }
+        await window.supabaseClient.auth.signOut();
 
-        const { error } =
-            await window.supabaseClient.auth.signOut();
-
-        if (error) {
-
-            console.error(
-                "Erro ao sair:",
-                error
-            );
-
-            alert("Erro ao sair da conta.");
-
-            return;
-        }
-
-        // REDIRECIONA PARA O LOGIN APÓS SAIR
-        window.location.href = "https://danielsenai123.github.io/portfolio/login.html";
+        // REDIRECIONA PARA A TELA DE LOGIN AO SAIR
+        window.location.href = "./login.html";
 
     } catch (erro) {
-
-        console.error(
-            "Erro no logout:",
-            erro
-        );
-
+        console.error("Erro no logout:", erro);
         alert("Erro ao sair da conta.");
     }
 }
 
 
 // ==============================
-// VERIFICAR LOGIN
+// VERIFICAR SE O USUÁRIO ESTÁ LOGADO
 // ==============================
 
 async function verificarLogin() {
-
     try {
-
         if (!window.supabaseClient) {
-
-            console.error(
-                "Supabase não carregado."
-            );
-
+            console.error("Supabase não carregado.");
             return;
         }
 
-
-        // ==============================
-        // RECUPERAR SESSÃO
-        // ==============================
-
-        const {
-            data,
-            error
-        } = await window.supabaseClient.auth.getSession();
-
+        const { data, error } = await window.supabaseClient.auth.getSession();
 
         if (error) {
-
-            console.error(
-                "Erro ao recuperar sessão:",
-                error
-            );
-
+            console.error("Erro ao recuperar sessão:", error);
+            window.location.href = "./login.html";
             return;
         }
-
 
         const session = data.session;
 
-
-        // ==============================
-        // SEM SESSÃO -> REDIRECIONA PARA LOGIN
-        // ==============================
-
+        // SE NÃO TIVER SESSÃO (NÃO ESTIVER LOGADO), VAI PARA O LOGIN IMMEDIATAMENTE
         if (!session) {
-
-            console.log(
-                "Nenhuma sessão encontrada."
-            );
-
-            window.location.href =
-                "https://danielsenai123.github.io/portfolio/login.html";
-
+            console.log("Usuário não autenticado. Redirecionando para login.html...");
+            window.location.href = "./login.html";
             return;
         }
 
-
-        // ==============================
-        // USUÁRIO LOGADO
-        // ==============================
-
-        const user =
-            session.user;
-
-
-        console.log(
-            "Usuário logado:",
-            user
-        );
-
-
-        // ==============================
-        // MOSTRAR EMAIL
-        // ==============================
-
-        const nomeUsuario =
-            document.getElementById(
-                "usuario-logado"
-            );
-
+        // SE TIVER SESSÃO, MOSTRA O USUÁRIO LOGADO
+        const user = session.user;
+        const nomeUsuario = document.getElementById("usuario-logado");
 
         if (nomeUsuario) {
-
-            nomeUsuario.textContent =
-                `Olá, ${user.email}!`;
+            nomeUsuario.textContent = `Olá, ${user.email}!`;
         }
 
-
-        // ==============================
-        // BUSCAR PERFIL
-        // ==============================
-
+        // Buscar dados do perfil (opcional)
         try {
-
-            const {
-                data: perfil,
-                error: perfilError
-            } = await window.supabaseClient
+            const { data: perfil } = await window.supabaseClient
                 .from("perfis")
-                .select(
-                    "nome, email, tipo_usuario"
-                )
+                .select("nome")
                 .eq("id", user.id)
                 .maybeSingle();
 
-
-            if (perfilError) {
-
-                console.warn(
-                    "Não foi possível carregar o perfil:",
-                    perfilError
-                );
-
-                return;
+            if (perfil && perfil.nome && nomeUsuario) {
+                nomeUsuario.textContent = `Olá, ${perfil.nome}!`;
             }
-
-
-            if (
-                perfil &&
-                perfil.nome &&
-                nomeUsuario
-            ) {
-
-                nomeUsuario.textContent =
-                    `Olá, ${perfil.nome}!`;
-            }
-
-        } catch (erroPerfil) {
-
-            console.warn(
-                "Erro ao carregar perfil:",
-                erroPerfil
-            );
-
+        } catch (e) {
+            console.warn("Perfil não encontrado:", e);
         }
 
     } catch (erro) {
-
-        console.error(
-            "Erro na verificação de login:",
-            erro
-        );
-
+        console.error("Erro na verificação de login:", erro);
+        window.location.href = "./login.html";
     }
 }
 
 
 // ==============================
-// INICIAR VERIFICAÇÃO NA PÁGINA INICIAL
+// INICIALIZAÇÃO CONTROLADA
 // ==============================
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
+document.addEventListener("DOMContentLoaded", function () {
+    const pathname = window.location.pathname;
 
-        const caminho =
-            window.location.pathname;
+    // Se estiver na página de login, não precisa verificar a sessão para evitar loop de redirecionamento
+    const ePaginaLogin = pathname.includes("login.html") || pathname.includes("cadastro.html");
 
-        const pagina =
-            caminho.split("/").pop();
-
-        // Executa a verificação apenas no index.html (não no login.html)
-        if (
-            pagina === "" ||
-            pagina === "index.html"
-        ) {
-            verificarLogin();
-        }
-
+    if (!ePaginaLogin) {
+        // Em qualquer outra página (index.html, /portfolio/, etc), EXIGE que o usuário esteja logado!
+        verificarLogin();
     }
-);git add .
+});
