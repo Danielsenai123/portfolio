@@ -4,10 +4,16 @@ formCadastro.addEventListener("submit", async function (event) {
 
     event.preventDefault();
 
-    const nome = document.getElementById("nome").value;
-    const email = document.getElementById("email").value;
+    const nome = document.getElementById("nome").value.trim();
+    const email = document.getElementById("email").value.trim();
     const senha = document.getElementById("senha").value;
     const confirmarSenha = document.getElementById("confirmarSenha").value;
+
+    // Verificar campos
+    if (!nome || !email || !senha || !confirmarSenha) {
+        alert("Preencha todos os campos.");
+        return;
+    }
 
     // Verificar se as senhas são iguais
     if (senha !== confirmarSenha) {
@@ -15,41 +21,45 @@ formCadastro.addEventListener("submit", async function (event) {
         return;
     }
 
+    // Verificar tamanho da senha
+    if (senha.length < 6) {
+        alert("A senha deve ter pelo menos 6 caracteres.");
+        return;
+    }
+
     try {
 
-        const resposta = await fetch("/cadastro", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                nome: nome,
-                email: email,
-                senha: senha
-            })
+        // Criar usuário no Supabase
+        const { data, error } = await window.supabaseClient.auth.signUp({
+            email: email,
+            password: senha,
+            options: {
+                data: {
+                    nome: nome
+                }
+            }
         });
 
-        const dados = await resposta.json();
-
-        if (resposta.ok) {
-
-            alert(dados.mensagem);
-
-            // Voltar para o login
-            window.location.href = "/login.html";
-
-        } else {
-
-            alert(dados.mensagem);
-
+        if (error) {
+            console.error("Erro no cadastro:", error);
+            alert(error.message);
+            return;
         }
+
+        if (!data.user) {
+            alert("Não foi possível criar o usuário.");
+            return;
+        }
+
+        alert("Cadastro realizado com sucesso!");
+
+        window.location.href = "/login.html";
 
     } catch (erro) {
 
         console.error("Erro:", erro);
 
-        alert("Erro ao conectar com o servidor.");
-
+        alert("Ocorreu um erro ao realizar o cadastro.");
     }
 
 });
