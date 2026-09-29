@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -6,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="/css/cadastro-style.css">
+    <link rel="stylesheet" href="./css/cadastro-style.css">
 
     <title>Cadastrar Usuário</title>
 </head>
@@ -17,7 +16,7 @@
 
         <h1>Criar Conta</h1>
 
-        <form id="formCadastro">
+        <form id="formCadastro" onsubmit="cadastrarUsuario(event)">
 
             <label for="nome">Nome</label>
             <input
@@ -61,21 +60,20 @@
 
         <p>
             Já possui uma conta?
-            <a href="/login.html">Fazer login</a>
+            <a href="./login.html">Fazer login</a>
         </p>
 
     </div>
 
-    <!-- Supabase -->
+    <!-- Supabase SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <!-- Configuração do Supabase -->
-    <script src="/js/supabase.js"></script>
+    <script src="./js/supabase.js"></script>
 
-    <!-- Código do cadastro -->
-    <script src="/js/cadastro.js"></script>
+    <!-- Script Geral do Projeto -->
+    <script src="./js/script.js"></script>
 
 </body>
 
 </html>
-```

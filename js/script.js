@@ -1,3 +1,13 @@
+// Navegação segura no GitHub Pages
+function navegarPara(pagina) {
+    const caminho = window.location.pathname;
+    if (caminho.endsWith("/") || caminho.endsWith("index.html")) {
+        window.location.href = "./" + pagina;
+    } else {
+        window.location.href = pagina;
+    }
+}
+
 // ==========================================
 // 1. FUNÇÃO DE LOGIN
 // ==========================================
@@ -8,7 +18,7 @@ async function logar(event) {
     const senha = document.getElementById("senha")?.value;
 
     if (!email || !senha) {
-        alert("Preencha o e-mail e a senha.");
+        alert("Preencha e-mail e senha.");
         return;
     }
 
@@ -27,13 +37,45 @@ async function logar(event) {
         return;
     }
 
-    // Redireciona diretamente para o index
-    window.location.href = "index.html";
+    navegarPara("index.html");
 }
 
+// ==========================================
+// 2. FUNÇÃO DE CADASTRO
+// ==========================================
+async function cadastrarUsuario(event) {
+    if (event) event.preventDefault();
+
+    const email = document.getElementById("email")?.value.trim();
+    const senha = document.getElementById("senha")?.value;
+    const confirmarSenha = document.getElementById("confirmarSenha")?.value;
+
+    if (senha !== confirmarSenha) {
+        alert("As senhas não coincidem!");
+        return;
+    }
+
+    if (!window.supabaseClient) {
+        alert("Aguarde a conexão com o Supabase e tente novamente.");
+        return;
+    }
+
+    const { data, error } = await window.supabaseClient.auth.signUp({
+        email: email,
+        password: senha
+    });
+
+    if (error) {
+        alert("Erro ao cadastrar: " + error.message);
+        return;
+    }
+
+    alert("Cadastro realizado com sucesso! Faça login para continuar.");
+    navegarPara("login.html");
+}
 
 // ==========================================
-// 2. MOSTRAR / OCULTAR SENHA
+// 3. MOSTRAR / OCULTAR SENHA
 // ==========================================
 function alternarSenha() {
     const campoSenha = document.getElementById("senha");
@@ -50,9 +92,8 @@ function alternarSenha() {
     }
 }
 
-
 // ==========================================
-// 3. LOGOUT (BOTÃO SAIR)
+// 4. LOGOUT (BOTÃO SAIR DO INDEX)
 // ==========================================
 async function logout() {
     if (window.supabaseClient) {
@@ -60,32 +101,34 @@ async function logout() {
     }
     localStorage.clear();
     sessionStorage.clear();
-    window.location.href = "login.html";
+    navegarPara("login.html");
 }
 
-
 // ==========================================
-// 4. VERIFICAÇÃO DE ACESSO
+// 5. VERIFICAÇÃO DE ACESSO AO INDEX
 // ==========================================
 async function verificarAcesso() {
     const caminho = window.location.pathname;
 
-    // Se estiver no login ou cadastro, não interrompe
+    // Se estiver no login ou cadastro, ignora a proteção do index
     if (caminho.includes("login.html") || caminho.includes("cadastro.html")) {
         return;
     }
 
-    if (!window.supabaseClient) return;
-
-    const { data } = await window.supabaseClient.auth.getSession();
-
-    // Se NÃO estiver logado, redireciona obrigatoriamente para o login
-    if (!data || !data.session) {
-        window.location.href = "login.html";
+    if (!window.supabaseClient) {
+        setTimeout(verificarAcesso, 100);
         return;
     }
 
-    // Exibe o email do utilizador no topo caso esteja logado
+    const { data } = await window.supabaseClient.auth.getSession();
+
+    // Se NÃO estiver logado e tentar aceder ao index, envia para o login
+    if (!data || !data.session) {
+        navegarPara("login.html");
+        return;
+    }
+
+    // Se estiver logado, mostra o email no topo
     const nomeUsuario = document.getElementById("usuario-logado");
     if (nomeUsuario && data.session.user) {
         nomeUsuario.textContent = `Olá, ${data.session.user.email}!`;
