@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Perfil - Daniel</title>
 
-    <!-- Importa apenas o CSS principal padronizado com relative path -->
+    <!-- Importa o CSS principal padronizado -->
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
@@ -32,54 +32,54 @@
             Gerencie suas informações de conta e acesso ao sistema.
         </p>
 
-        <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin-bottom: 30px;">
+        <hr style="border: 0; border-top: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 30px;">
 
-        <div class="contato-item" style="max-width: 520px; margin: 0 auto; text-align: center;">
+        <div class="contato-item" style="max-width: 520px; margin: 0 auto; text-align: center; border-color: rgba(96, 165, 250, 0.2);">
             
-            <div style="font-size: 3.5rem; margin-bottom: 10px;">👤</div>
-            <h2 id="usuario-logado" style="font-size: 1.1rem; color: #a855f7; margin-bottom: 25px; word-break: break-all;">
+            <div style="font-size: 3.5rem; margin-bottom: 10px; filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.4));">👤</div>
+            <h2 id="usuario-logado" style="font-size: 1.1rem; background: linear-gradient(135deg, #60a5fa 0%, #a855f7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 25px; word-break: break-all; font-weight: 600;">
                 Carregando informações...
             </h2>
 
             <div style="display: flex; flex-direction: column; gap: 12px; text-align: left; margin-bottom: 25px;">
                 
-                <div style="background: rgba(13, 17, 23, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); padding: 12px 18px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center;">
+                <div style="background: rgba(13, 17, 23, 0.8); border: 1px solid rgba(255, 255, 255, 0.1); padding: 12px 18px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center;">
                     <span style="color: #9ca3af; font-size: 0.9rem;">Nome</span>
-                    <strong id="nome-usuario" style="color: #60a5fa; font-size: 0.95rem;">Carregando...</strong>
+                    <strong id="nome-usuario" style="color: #f3f4f6; font-size: 0.95rem;">Carregando...</strong>
                 </div>
 
-                <div style="background: rgba(13, 17, 23, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); padding: 12px 18px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center;">
+                <div style="background: rgba(13, 17, 23, 0.8); border: 1px solid rgba(255, 255, 255, 0.1); padding: 12px 18px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center;">
                     <span style="color: #9ca3af; font-size: 0.9rem;">E-mail</span>
                     <strong id="email-usuario" style="color: #60a5fa; font-size: 0.95rem;">Carregando...</strong>
                 </div>
 
-                <div style="background: rgba(13, 17, 23, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); padding: 12px 18px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center;">
+                <div style="background: rgba(13, 17, 23, 0.8); border: 1px solid rgba(255, 255, 255, 0.1); padding: 12px 18px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center;">
                     <span style="color: #9ca3af; font-size: 0.9rem;">Tipo de usuário</span>
-                    <strong id="tipo-usuario" style="color: #60a5fa; font-size: 0.95rem;">Carregando...</strong>
+                    <strong id="tipo-usuario" style="color: #a855f7; font-size: 0.95rem;">Carregando...</strong>
                 </div>
 
-                <div style="background: rgba(13, 17, 23, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); padding: 12px 18px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center;">
+                <div style="background: rgba(13, 17, 23, 0.8); border: 1px solid rgba(255, 255, 255, 0.1); padding: 12px 18px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center;">
                     <span style="color: #9ca3af; font-size: 0.9rem;">Data de criação</span>
-                    <strong id="data-criacao" style="color: #60a5fa; font-size: 0.95rem;">Em breve</strong>
+                    <strong id="data-criacao" style="color: #9ca3af; font-size: 0.95rem;">Em breve</strong>
                 </div>
 
             </div>
 
             <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
-                <button onclick="editarPerfil()" style="padding: 12px; background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); color: #ffffff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+                <button onclick="editarPerfil()" style="padding: 12px; background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); color: #ffffff; border: none; border-radius: 8px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);">
                     Editar perfil
                 </button>
 
-                <button onclick="alterarSenha()" style="padding: 12px; background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); color: #ffffff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+                <button onclick="alterarSenha()" style="padding: 12px; background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); color: #ffffff; border: none; border-radius: 8px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);">
                     Alterar senha
                 </button>
 
-                <button onclick="logout()" style="padding: 12px; background: rgba(239, 68, 68, 0.2); border: 1px solid rgba(239, 68, 68, 0.4); color: #fca5a5; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+                <button onclick="logout()" style="padding: 12px; background: rgba(239, 68, 68, 0.2); border: 1px solid rgba(239, 68, 68, 0.4); color: #fca5a5; border-radius: 8px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
                     Sair da conta
                 </button>
             </div>
 
-            <a href="./index.html" style="color: #9ca3af; font-size: 0.9rem; text-decoration: none;">
+            <a href="./index.html" style="color: #60a5fa; font-size: 0.9rem; text-decoration: none; font-weight: 500;">
                 ← Voltar para o portfólio
             </a>
 
