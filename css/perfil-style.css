@@ -1,184 +1,104 @@
-* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    min-height: 100vh;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background: linear-gradient(135deg, #111820, #26313b);
-
-    font-family: "Times New Roman", serif;
-    color: white;
-}
-
 .perfil-container {
-    width: 450px;
+    max-width: 550px;
+    margin: 40px auto;
+    background: rgba(22, 27, 34, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
     padding: 35px;
-
-    background: #222b33;
-
-    border: 2px solid #ffd700;
-    border-radius: 18px;
-
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-}
-
-
-/* ==============================
-   CABEÇALHO
-   ============================== */
-
-.perfil-header {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
     text-align: center;
 }
 
-.foto-perfil {
-    width: 90px;
-    height: 90px;
-
-    margin: 0 auto 15px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background: #111820;
-
-    border: 2px solid #ffd700;
-    border-radius: 50%;
-
-    font-size: 45px;
+.perfil-header .foto-perfil {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
 }
 
 .perfil-header h1 {
-    margin: 10px 0;
-
-    color: #ffd700;
-
-    font-size: 34px;
+    font-size: 2rem;
+    margin-bottom: 5px;
 }
 
-#usuario-logado {
+.perfil-header p {
+    color: #a855f7;
+    font-size: 0.95rem;
     margin-bottom: 25px;
-
-    color: #ddd;
-
-    font-size: 17px;
 }
-
-
-/* ==============================
-   INFORMAÇÕES
-   ============================== */
 
 .perfil-info {
     display: flex;
     flex-direction: column;
-
     gap: 12px;
+    margin-bottom: 25px;
+    text-align: left;
 }
 
-.campo {
-    padding: 13px 15px;
-
-    background: #182129;
-
-    border-radius: 8px;
-
-    border-left: 3px solid #ffd700;
+.perfil-info .campo {
+    background: rgba(13, 17, 23, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 12px 18px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.campo span {
-    display: block;
-
-    margin-bottom: 5px;
-
-    color: #aaa;
-
-    font-size: 14px;
+.perfil-info .campo span {
+    color: #9ca3af;
+    font-size: 0.9rem;
 }
 
-.campo strong {
-    color: white;
-
-    font-size: 17px;
-
-    word-break: break-word;
+.perfil-info .campo strong {
+    color: #60a5fa;
+    font-size: 0.95rem;
 }
-
-
-/* ==============================
-   BOTÕES
-   ============================== */
 
 .perfil-botoes {
     display: flex;
     flex-direction: column;
-
     gap: 10px;
-
-    margin-top: 25px;
+    margin-bottom: 20px;
 }
 
 .perfil-botoes button {
-    width: 100%;
-    height: 43px;
-
+    padding: 12px;
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    color: #ffffff;
     border: none;
-    border-radius: 7px;
-
-    background: #ffd700;
-    color: #222;
-
-    font-family: "Times New Roman", serif;
-
-    font-size: 17px;
-    font-weight: bold;
-
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
     cursor: pointer;
-
-    transition: 0.2s;
+    transition: all 0.3s ease;
 }
 
 .perfil-botoes button:hover {
-    background: #ffea70;
-
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(59, 130, 246, 0.4);
 }
 
 .perfil-botoes .btn-sair {
-    background: #555;
-    color: white;
+    background: rgba(239, 68, 68, 0.2);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    color: #fca5a5;
 }
 
 .perfil-botoes .btn-sair:hover {
-    background: #666;
+    background: #ef4444;
+    color: #ffffff;
+    box-shadow: 0 6px 15px rgba(239, 68, 68, 0.4);
 }
 
-
-/* ==============================
-   VOLTAR
-   ============================== */
-
 .voltar {
-    display: block;
-
-    margin-top: 22px;
-
-    text-align: center;
-
-    color: #ffd700;
-
-    text-decoration: none;
-
-    font-size: 16px;
+    display: inline-block;
+    margin-top: 10px;
+    color: #9ca3af;
+    font-size: 0.9rem;
+    transition: color 0.2s;
 }
 
 .voltar:hover {
-    text-decoration: underline;
+    color: #60a5fa;
 }
