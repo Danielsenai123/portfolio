@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade Favorita - Eixo 1</title>
+    <link rel="stylesheet" href="./css/style.css">
+
+    <style>
+        .favorita-container {
+            max-width: 900px;
+            margin: 35px auto;
+            padding: 25px;
+            border: 1px solid #ffd700;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .favorita-container img {
+            width: 100%;
+            max-width: 700px;
+            max-height: 500px;
+            object-fit: contain;
+            margin: 20px auto;
+            border-radius: 8px;
+        }
+
+        .favorita-info {
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        .voltar {
+            display: inline-block;
+            margin-top: 25px;
+            color: #ffd700;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <button class="logout-btn" onclick="logout()">Sair</button>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Sobre mim</a></li>
+                <li><a href="project.html">Projetos</a></li>
+                <li><a href="contact.html">Contatos</a></li>
+                <li><a href="areas.html">Áreas do Conhecimento</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>⭐ Atividade Escolhida</h1>
+        <p>Linguagens e suas Tecnologias — Eixo 1</p>
+
+        <hr>
+
+        <div class="favorita-container">
+            <p class="favorita-info">Data: 09/03/2026</p>
+
+            <a href="./img/ultima atividade linguagens.png" target="_blank">
+                <img
+                    src="./img/ultima atividade linguagens.png"
+                    alt="Atividade escolhida de Linguagens - Eixo 1">
+            </a>
+        </div>
+
+
+<!-- CIÊNCIAS HUMANAS -->
+<div class="favorita-container">
+    <h2>Ciências Humanas e suas Tecnologias</h2>
+
+    <p class="favorita-info">Data: 19/02/2026</p>
+
+    <a href="./img/mapa mental racismo ambiental segunda atividade.png" target="_blank">
+        <img
+            src="./img/mapa mental racismo ambiental segunda atividade.png"
+            alt="Mapa mental sobre racismo ambiental">
+    </a>
+</div>
+
+
+<!-- CIÊNCIAS DA NATUREZA -->
+<div class="favorita-container">
+    <h2>Ciências da Natureza e suas Tecnologias</h2>
+
+    <p class="favorita-info">Data: 26/02/2026</p>
+
+    <a href="./img/natureza 6.png" target="_blank">
+        <img
+            src="./img/natureza 6.png"
+            alt="Atividade escolhida de Ciências da Natureza">
+    </a>
+</div>
+
+
+<!-- MATEMÁTICA -->
+<div class="favorita-container">
+    <h2>Matemática e suas Tecnologias</h2>
+
+    <p class="favorita-info">Data: 26/02/2026</p>
+
+    <a href="./img/matematica 2.png" target="_blank">
+        <img
+            src="./img/matematica 2.png"
+            alt="Atividade escolhida de Matemática">
+    </a>
+</div>
+
+
+<!-- SENAI -->
+<div class="favorita-container">
+    <h2>SENAI e suas Tecnologias</h2>
+
+    <p class="favorita-info">Data: 26/03/2026</p>
+
+    <a href="./img/Mapa mental excelência profissional eixo 1 ok.png" target="_blank">
+        <img
+            src="./img/Mapa mental excelência profissional eixo 1 ok.png"
+            alt="Mapa mental sobre excelência profissional">
+    </a>
+</div>
+
+
+
+        <a class="voltar" href="atividades-escolhidas.html">
+            ← Voltar para Atividades Escolhidas
+        </a>
+    </main>
+
+    <footer>
+        <div class="copyright">
+            <p>&copy; <span id="ano-atual"></span> Dan L. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="./js/supabase.js"></script>
+    <script src="./js/script.js"></script>
+
+</body>
+</html>

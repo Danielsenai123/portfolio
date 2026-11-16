@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividades Escolhidas - Eixo 3</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+
+    <style>
+        .favorita-container {
+            max-width: 900px;
+            margin: 35px auto;
+            padding: 25px;
+            border: 1px solid #ffd700;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .favorita-container img {
+            width: 100%;
+            max-width: 700px;
+            max-height: 500px;
+            object-fit: contain;
+            margin: 20px auto;
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+
+        .favorita-container img:hover {
+            transform: scale(1.02);
+            cursor: pointer;
+        }
+
+        .favorita-info {
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        .voltar {
+            display: inline-block;
+            margin: 25px 0;
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            .favorita-container {
+                margin: 20px 10px;
+                padding: 15px;
+            }
+
+            .favorita-container img {
+                max-height: 350px;
+            }
+        }
+    </style>
+</head>
+
+<body onload="verificarLogin()">
+
+    <header>
+        <h1>Daniel Leal - Portfolio</h1>
+        <p>Desenvolvedor</p>
+
+        <nav>
+            <ul>
+                <li><a href="./index.html">Sobre mim</a></li>
+                <li><a href="./project.html">Projetos</a></li>
+                <li><a href="./contact.html">Contatos</a></li>
+                <li><a href="./areas.html">Áreas do Conhecimento</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1 style="text-align: center;">⭐ Atividades Escolhidas - Eixo 3</h1>
+
+        <div class="favorita-container">
+            <h2>Linguagens e suas Tecnologias</h2>
+            <p class="favorita-info">Data: 12/08/2026</p>
+
+            <a href="./img/atividade linguagens mapa mental eixo 3.png" target="_blank">
+                <img src="./img/atividade linguagens mapa mental eixo 3.png"
+                     alt="Mapa mental de Linguagens do Eixo 3">
+            </a>
+        </div>
+
+        <div class="favorita-container">
+            <h2>Ciências Humanas e suas Tecnologias</h2>
+            <p class="favorita-info">Data: 20/08/2026</p>
+
+            <a href="./img/atividade humanas trabalho bioetica atual eixo 3.png" target="_blank">
+                <img src="./img/atividade humanas trabalho bioetica atual eixo 3.png"
+                     alt="Trabalho sobre bioética">
+            </a>
+        </div>
+
+        <div class="favorita-container">
+            <h2>Ciências da Natureza e suas Tecnologias</h2>
+            <p class="favorita-info">Data: 05/08/2026</p>
+
+            <a href="./img/atividade natureza eixo 3 painel biocombustiveis.png" target="_blank">
+                <img src="./img/atividade natureza eixo 3 painel biocombustiveis.png"
+                     alt="Painel sobre biocombustíveis">
+            </a>
+        </div>
+
+        <div class="favorita-container">
+            <h2>Matemática e suas Tecnologias</h2>
+            <p class="favorita-info">Data: 04/08/2026</p>
+
+            <a href="./img/atividade matematica slide euqção geral atual eixo 3.png" target="_blank">
+                <img src="./img/atividade matematica slide euqção geral atual eixo 3.png"
+                     alt="Slide sobre equação geral">
+            </a>
+        </div>
+
+        <div class="favorita-container">
+            <h2>SENAI e suas Tecnologias</h2>
+            <p class="favorita-info">Data: 31/08/2026</p>
+
+            <a href="./img/atividade eixo 3 senai login sala.png" target="_blank">
+                <img src="./img/atividade eixo 3 senai login sala.png"
+                     alt="Atividade de login da sala do SENAI">
+            </a>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="./atividades-escolhidas.html" class="voltar">
+                ← Voltar para atividades escolhidas
+            </a>
+        </div>
+    </main>
+
+    <script src="./js/supabase.js"></script>
+    <script src="./js/script.js"></script>
+
+</body>
+</html>

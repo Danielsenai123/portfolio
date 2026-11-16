@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./css/style.css">
+
+    <title>Atividades Favoritas - Eixo 2</title>
+
+    <style>
+        .favorita-container {
+            max-width: 900px;
+            margin: 35px auto;
+            padding: 25px;
+            border: 1px solid #ffd700;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .favorita-container img {
+            width: 100%;
+            max-width: 700px;
+            max-height: 500px;
+            object-fit: contain;
+            margin: 20px auto;
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+
+        .favorita-container img:hover {
+            transform: scale(1.02);
+            cursor: pointer;
+        }
+
+        .favorita-info {
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        .voltar {
+            display: inline-block;
+            margin: 25px 0;
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            .favorita-container {
+                margin: 20px 10px;
+                padding: 15px;
+            }
+
+            .favorita-container img {
+                max-height: 350px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Sobre mim</a></li>
+                <li><a href="./project.html">Projetos</a></li>
+                <li><a href="./contact.html">Contatos</a></li>
+                <li><a href="./areas.html">Áreas do Conhecimento</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Atividades Escolhidas - Eixo 2</h1>
+        <p>Confira as atividades que selecionei neste eixo.</p>
+
+        <!-- LINGUAGENS -->
+        <div class="favorita-container">
+            <h2>Linguagens e suas Tecnologias</h2>
+            <p class="favorita-info">Data: 03/06/2026</p>
+
+            <a href="./img/atividade mapa mental generos textuais eixo 2.png" target="_blank">
+                <img src="./img/atividade mapa mental generos textuais eixo 2.png"
+                     alt="Mapa mental sobre gêneros textuais">
+            </a>
+        </div>
+
+        <!-- CIÊNCIAS HUMANAS -->
+        <div class="favorita-container">
+            <h2>Ciências Humanas e suas Tecnologias</h2>
+            <p class="favorita-info">Data: 28/04/2026</p>
+
+            <a href="./img/atividade no século XXI quem controla a informação controla o mundo eixo 2 humanas.png" target="_blank">
+                <img src="./img/atividade no século XXI quem controla a informação controla o mundo eixo 2 humanas.png"
+                     alt="Atividade sobre o controle da informação">
+            </a>
+        </div>
+
+        <!-- CIÊNCIAS DA NATUREZA -->
+        <div class="favorita-container">
+            <h2>Ciências da Natureza e suas Tecnologias</h2>
+            <p class="favorita-info">Data: 27/05/2026</p>
+
+            <a href="./img/atividade slides sobre a teoria da evolução eixo 2.png" target="_blank">
+                <img src="./img/atividade slides sobre a teoria da evolução eixo 2.png"
+                     alt="Slides sobre a teoria da evolução">
+            </a>
+        </div>
+
+        <!-- MATEMÁTICA -->
+        <div class="favorita-container">
+            <h2>Matemática e suas Tecnologias</h2>
+            <p class="favorita-info">Data: 16/04/2026</p>
+
+            <a href="./img/atividade mapa mental estatistica eixo 2.png" target="_blank">
+                <img src="./img/atividade mapa mental estatistica eixo 2.png"
+                     alt="Mapa mental sobre estatística">
+            </a>
+        </div>
+
+        <!-- SENAI -->
+        <div class="favorita-container">
+            <h2>SENAI e suas Tecnologias</h2>
+            <p class="favorita-info">Data: 19/05/2026</p>
+
+            <a href="./img/atividade mapa mental sobre inteligencia emocional senai eixo 2.png" target="_blank">
+                <img src="./img/atividade mapa mental sobre inteligencia emocional senai eixo 2.png"
+                     alt="Mapa mental sobre inteligência emocional">
+            </a>
+        </div>
+
+        <a href="./atividades-escolhidas.html" class="voltar">
+            ← Voltar para atividades escolhidas
+        </a>
+
+    </main>
+
+    <script src="./js/supabase.js"></script>
+    <script src="./js/script.js"></script>
+
+</body>
+</html>
