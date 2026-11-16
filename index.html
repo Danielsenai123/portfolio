@@ -88,8 +88,8 @@
     <h2>Desenvolvedor</h2>
 
     <h2 id="frase-rotativa">
-        Transformando ideias em resultados
-    </h2>
+    Transformando ideias em resultados.
+</h2>
 
     <hr>
 
@@ -516,6 +516,35 @@ document.getElementById('toggle-ppe').addEventListener('click', function() {
     }
 
 });
+
+// FRASES ROTATIVAS DA TELA INICIAL
+
+const frases = [
+    "Transformando ideias em resultados.",
+    "Aprendendo hoje, evoluindo sempre.",
+    "Unindo criatividade, lógica e inovação.",
+    "Desenvolvendo habilidades, criando oportunidades."
+];
+
+let indiceFrase = 0;
+
+const elementoFrase = document.getElementById("frase-rotativa");
+
+setInterval(() => {
+
+    elementoFrase.style.opacity = 0;
+
+    setTimeout(() => {
+
+        indiceFrase = (indiceFrase + 1) % frases.length;
+
+        elementoFrase.textContent = frases[indiceFrase];
+
+        elementoFrase.style.opacity = 1;
+
+    }, 500);
+
+}, 4000);
 
 </script>
 
