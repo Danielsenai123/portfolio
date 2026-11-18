@@ -816,3 +816,14 @@ footer img:hover {
         font-size: 13px;
     }
 }
+
+.foto-perfil {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    margin: 0 auto 15px;
+    border: 4px solid #ffd700;
+}

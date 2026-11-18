@@ -1,0 +1,632 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Currículo | Daniel Leal</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #e9edf2;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .topbar {
+            background: #101d32;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .topbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .topbar a:hover {
+            color: #ffd700;
+        }
+
+        .print-button {
+            background: #ffd700;
+            color: #101d32;
+            border: none;
+            padding: 11px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .print-button:hover {
+            background: #e6c200;
+            transform: translateY(-2px);
+        }
+
+        .curriculo {
+            width: 900px;
+            max-width: 94%;
+            margin: 35px auto;
+            background: white;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.10);
+            display: grid;
+            grid-template-columns: 290px 1fr;
+            min-height: 1050px;
+        }
+
+        /* COLUNA LATERAL */
+
+        .sidebar {
+            background: #101d32;
+            color: white;
+            padding: 40px 28px;
+        }
+
+        .profile {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .profile h1 {
+            font-size: 29px;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .profile .profession {
+            color: #ffd700;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .sidebar-section {
+            margin-top: 30px;
+        }
+
+        .sidebar-section h2 {
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #ffd700;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.5);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+
+        .contact-item {
+            font-size: 13px;
+            margin-bottom: 13px;
+            overflow-wrap: anywhere;
+        }
+
+        .contact-item strong {
+            display: block;
+            color: #ffd700;
+            font-size: 12px;
+            margin-bottom: 3px;
+        }
+
+        .skill {
+            margin-bottom: 13px;
+            font-size: 13px;
+        }
+
+        .skill span {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .skill-bar {
+            height: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-level {
+            height: 100%;
+            background: #ffd700;
+            border-radius: 10px;
+        }
+
+        .sidebar-list {
+            list-style: none;
+            font-size: 13px;
+        }
+
+        .sidebar-list li {
+            margin-bottom: 10px;
+        }
+
+        /* CONTEÚDO PRINCIPAL */
+
+        .main-content {
+            padding: 42px 38px;
+        }
+
+        .intro {
+            border-bottom: 3px solid #ffd700;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .intro h2 {
+            font-size: 25px;
+            color: #101d32;
+            margin-bottom: 8px;
+        }
+
+        .intro p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .section {
+            margin-bottom: 28px;
+        }
+
+        .section h2 {
+            color: #101d32;
+            font-size: 17px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-left: 4px solid #d5ae00;
+            padding-left: 12px;
+            margin-bottom: 15px;
+        }
+
+        .section p {
+            font-size: 13px;
+            color: #555;
+            text-align: justify;
+        }
+
+        .item {
+            margin-bottom: 18px;
+        }
+
+        .item h3 {
+            color: #182b48;
+            font-size: 15px;
+            margin-bottom: 3px;
+        }
+
+        .item .subtitle {
+            color: #a18400;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        .item p {
+            font-size: 13px;
+        }
+
+        .item ul {
+            padding-left: 19px;
+            color: #555;
+            font-size: 13px;
+        }
+
+        .item li {
+            margin-bottom: 5px;
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .tag {
+            background: #eef1f5;
+            color: #263b59;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 18px;
+            color: #777;
+            font-size: 11px;
+        }
+
+        @media (max-width: 700px) {
+            .curriculo {
+                grid-template-columns: 1fr;
+                width: 94%;
+            }
+
+            .sidebar {
+                padding: 30px 25px;
+            }
+
+            .main-content {
+                padding: 30px 25px;
+            }
+
+            .topbar {
+                justify-content: center;
+            }
+        }
+
+        @media print {
+            @page {
+                size: A4;
+                margin: 0;
+            }
+
+            body {
+                background: white;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .topbar {
+                display: none;
+            }
+
+            .curriculo {
+                width: 100%;
+                max-width: none;
+                margin: 0;
+                box-shadow: none;
+                min-height: 297mm;
+            }
+
+            .sidebar {
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            .section,
+            .item {
+                break-inside: avoid;
+            }
+
+            .footer {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="topbar">
+
+        <a href="./index.html">← Voltar ao Portfólio</a>
+
+        <button class="print-button" onclick="window.print()">
+            Imprimir / Salvar em PDF
+        </button>
+
+    </div>
+
+    <main class="curriculo">
+
+        <!-- COLUNA LATERAL -->
+
+        <aside class="sidebar">
+
+            <div class="profile">
+
+                <h1>Daniel Leal</h1>
+
+                <p class="profession">
+                    Desenvolvedor & Administrador
+                </p>
+
+            </div>
+
+            <!-- CONTATO -->
+
+            <section class="sidebar-section">
+
+                <h2>Contato</h2>
+
+                <div class="contact-item">
+                    <strong>E-mail</strong>
+                    danielleal3451@gmail.com
+                </div>
+
+                <div class="contact-item">
+                    <strong>Telefone</strong>
+                    (89) 99465-9686
+                </div>
+
+                <div class="contact-item">
+                    <strong>Localização</strong>
+                    Picos - PI, Brasil
+                </div>
+
+                <div class="contact-item">
+                    <strong>Portfólio</strong>
+                    danielsenai123.github.io/portfolio
+                </div>
+
+            </section>
+
+            <!-- CONHECIMENTOS -->
+
+            <section class="sidebar-section">
+
+                <h2>Conhecimentos Técnicos</h2>
+
+                <p style="font-size: 13px; margin-bottom: 18px;">
+                    Nível geral de programação:
+                    <strong style="color: #ffd700;">Intermediário</strong>
+                </p>
+
+                <div class="skill">
+                    <span>HTML e CSS</span>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="width: 75%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <span>JavaScript</span>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="width: 55%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <span>Banco de Dados / SQL</span>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="width: 55%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <span>Node.js</span>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="width: 45%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <span>Git e GitHub</span>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="width: 55%;"></div>
+                    </div>
+                </div>
+
+                <p style="font-size: 11px; color: #cbd3df; margin-top: 12px;">
+                    Conhecimentos desenvolvidos por meio de estudos
+                    e projetos acadêmicos e pessoais.
+                </p>
+
+            </section>
+
+            <!-- HABILIDADES -->
+
+            <section class="sidebar-section">
+
+                <h2>Habilidades</h2>
+
+                <ul class="sidebar-list">
+
+                    <li>• Comunicação</li>
+                    <li>• Organização e planejamento</li>
+                    <li>• Pensamento lógico</li>
+                    <li>• Criatividade</li>
+                    <li>• Aprendizado contínuo</li>
+                    <li>• Visão empreendedora</li>
+                    <li>• Trabalho em equipe</li>
+
+                </ul>
+
+            </section>
+
+            <!-- INTERESSES -->
+
+            <section class="sidebar-section">
+
+                <h2>Áreas de Interesse</h2>
+
+                <ul class="sidebar-list">
+
+                    <li>• Desenvolvimento Web</li>
+                    <li>• Inteligência Artificial</li>
+                    <li>• Administração</li>
+                    <li>• Empreendedorismo</li>
+                    <li>• Tecnologia e Inovação</li>
+
+                </ul>
+
+            </section>
+
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+
+        <div class="main-content">
+
+            <div class="intro">
+
+                <h2>Currículo Profissional</h2>
+
+                <p>
+                    Tecnologia, desenvolvimento e gestão de negócios
+                </p>
+
+            </div>
+
+            <!-- OBJETIVO -->
+
+            <section class="section">
+
+                <h2>Objetivo Profissional</h2>
+
+                <p>
+                    Busco oportunidades para desenvolver minha carreira
+                    profissional, aplicar os conhecimentos adquiridos
+                    na formação em Informática para Internet e ampliar
+                    minha experiência nas áreas de tecnologia,
+                    desenvolvimento de sistemas e administração.
+                    Tenho interesse em aprender continuamente,
+                    participar de projetos e contribuir com soluções
+                    criativas e eficientes.
+                </p>
+
+            </section>
+
+            <!-- FORMAÇÃO -->
+
+            <section class="section">
+
+                <h2>Formação Acadêmica</h2>
+
+                <div class="item">
+
+                    <h3>Informática para Internet</h3>
+
+                    <p class="subtitle">
+                        SESI / SENAI — Formação concluída
+                    </p>
+
+                    <p>
+                        Formação voltada ao desenvolvimento de
+                        conhecimentos em tecnologia, programação,
+                        desenvolvimento de páginas web e sistemas,
+                        banco de dados e soluções para a internet.
+                    </p>
+
+                </div>
+
+            </section>
+
+            <!-- PROJETOS ACADÊMICOS E PESSOAIS -->
+
+            <section class="section">
+
+                <h2>Projetos Acadêmicos e Pessoais</h2>
+
+                <div class="item">
+
+                    <h3>Desenvolvimento de Portfólio Pessoal</h3>
+
+                    <p class="subtitle">
+                        Projeto pessoal e acadêmico
+                    </p>
+
+                    <p>
+                        Criação e organização de um site pessoal
+                        para apresentar conhecimentos, atividades,
+                        projetos e trajetória acadêmica, utilizando
+                        tecnologias de desenvolvimento web.
+                    </p>
+
+                </div>
+
+                <div class="item">
+
+                    <h3>Sistema de Cadastro de Alunos</h3>
+
+                    <p class="subtitle">
+                        Projeto acadêmico
+                    </p>
+
+                    <p>
+                        Desenvolvimento de uma aplicação para
+                        cadastro e gerenciamento de informações
+                        de alunos, trabalhando com validação de
+                        dados, integração com banco de dados e
+                        operações de registro.
+                    </p>
+
+                </div>
+
+                <div class="item">
+
+                    <h3>Portal do Aluno</h3>
+
+                    <p class="subtitle">
+                        Projeto de desenvolvimento web
+                    </p>
+
+                    <p>
+                        Planejamento e desenvolvimento de uma
+                        aplicação voltada ao ambiente estudantil,
+                        com funcionalidades de cadastro, acesso
+                        e organização de informações acadêmicas.
+                    </p>
+
+                </div>
+
+            </section>
+
+            <!-- CONHECIMENTOS TÉCNICOS -->
+
+            <section class="section">
+
+                <h2>Conhecimentos Técnicos</h2>
+
+                <div class="tag-container">
+
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Node.js</span>
+                    <span class="tag">SQL</span>
+                    <span class="tag">SQLite</span>
+                    <span class="tag">MySQL</span>
+                    <span class="tag">Git</span>
+                    <span class="tag">GitHub</span>
+                    <span class="tag">VS Code</span>
+                    <span class="tag">Inteligência Artificial</span>
+
+                </div>
+
+            </section>
+
+            <!-- PERFIL -->
+
+            <section class="section">
+
+                <h2>Perfil Pessoal</h2>
+
+                <p>
+                    Sou uma pessoa dedicada ao aprendizado e ao
+                    desenvolvimento de novas habilidades. Tenho
+                    interesse em tecnologia, administração e
+                    empreendedorismo, buscando unir conhecimentos
+                    dessas áreas para desenvolver projetos,
+                    encontrar oportunidades e construir uma
+                    trajetória profissional sólida.
+                </p>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <div class="footer">
+
+        Daniel Leal | Currículo Profissional
+
+    </div>
+
+</body>
+</html>

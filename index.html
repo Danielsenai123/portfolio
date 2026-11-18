@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -45,7 +46,8 @@
             margin-top: 5px;
         }
 
-        #toggle-card {
+        #toggle-card,
+        #toggle-ppe {
             cursor: pointer;
             display: inline-block;
             color: #ffd700;
@@ -53,8 +55,24 @@
             transition: 0.3s;
         }
 
-        #toggle-card:hover {
+        #toggle-card:hover,
+        #toggle-ppe:hover {
             filter: brightness(1.2);
+        }
+
+        .objetivo-item {
+            margin-top: 15px;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .objetivo-item h4 {
+            margin-bottom: 8px;
+            color: #ffd700;
+        }
+
+        .objetivo-item p {
+            margin: 0;
         }
     </style>
 </head>
@@ -71,12 +89,15 @@
             <li><a href="project.html">Projetos</a></li>
             <li><a href="contact.html">Contatos</a></li>
             <li><a href="areas.html">Áreas do Conhecimento</a></li>
+            <li><a href="curriculo.html">Currículo</a></li>
+            <li><a href="encerramento.html">Encerramento</a></li>
             <li><a href="perfil.html">Meu Perfil</a></li>
         </ul>
     </nav>
 
     <div class="center">
-        <img src="img/Foto perfil.jpg"
+        <img src="img/foto perfil 3.jpeg"
+             alt="Foto de Daniel Leal"
              ondragstart="return false;"
              oncontextmenu="return false;">
     </div>
@@ -88,8 +109,8 @@
     <h2>Desenvolvedor</h2>
 
     <h2 id="frase-rotativa">
-    Transformando ideias em resultados.
-</h2>
+        Transformando ideias em resultados.
+    </h2>
 
     <hr>
 
@@ -97,6 +118,8 @@
 
 
 <main>
+
+    <!-- SOBRE MIM -->
 
     <section>
 
@@ -110,6 +133,62 @@
 
     </section>
 
+
+    <!-- MEUS OBJETIVOS -->
+
+    <section>
+
+        <h3>Meus Objetivos</h3>
+
+        <p>
+            Busco construir um futuro baseado no conhecimento,
+            no desenvolvimento pessoal e na realização dos meus sonhos.
+            Tenho interesse nas áreas de tecnologia, administração
+            e empreendedorismo, e pretendo continuar aprendendo
+            e buscando oportunidades para crescer.
+        </p>
+
+        <div class="ppe-box objetivo-item">
+
+            <h4>Objetivos Pessoais</h4>
+
+            <p>
+                Conquistar minha independência, proporcionar uma
+                vida melhor para mim e para as pessoas que fazem
+                parte da minha trajetória.
+            </p>
+
+        </div>
+
+        <div class="ppe-box objetivo-item">
+
+            <h4>Objetivos Acadêmicos</h4>
+
+            <p>
+                Concluir minha formação, continuar estudando,
+                realizar cursos e ampliar meus conhecimentos
+                em diferentes áreas.
+            </p>
+
+        </div>
+
+        <div class="ppe-box objetivo-item">
+
+            <h4>Objetivos Profissionais</h4>
+
+            <p>
+                Construir uma carreira profissional, adquirir
+                experiência no mercado de trabalho e desenvolver
+                projetos próprios, unindo tecnologia, administração
+                e empreendedorismo.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- HISTÓRIA -->
 
     <section>
 
@@ -130,6 +209,8 @@
     </section>
 
 
+    <!-- HABILIDADES -->
+
     <section>
 
         <h3>Habilidades</h3>
@@ -142,6 +223,8 @@
 
     </section>
 
+
+    <!-- CARTÃO DE VISITA E PPE -->
 
     <section>
 
@@ -157,6 +240,8 @@
 
         </div>
 
+
+        <!-- CARTÃO DE VISITA -->
 
         <div id="business-card-content" style="display: none;">
 
@@ -183,6 +268,16 @@
                         <div class="card-body">
 
                             <p>
+                                <strong>📚</strong>
+                                Tecnologia e Desenvolvimento
+                            </p>
+
+                            <p>
+                                <strong>💡</strong>
+                                Administração e Empreendedorismo
+                            </p>
+
+                            <p>
                                 <strong>📧</strong>
                                 danielleal3451@gmail.com
                             </p>
@@ -203,7 +298,7 @@
                         <div class="card-footer">
 
                             <span>
-                                Transformando ideias em resultados
+                                Transformando ideias em resultados.
                             </span>
 
                         </div>
@@ -218,6 +313,8 @@
 
     </section>
 
+
+    <!-- PLANO PESSOAL DE ESTUDOS -->
 
     <div id="ppe-content" style="display: none;">
 
@@ -246,16 +343,18 @@
                 </div>
 
 
+                <!-- SEGUNDA -->
+
                 <div class="ppe-day">
                     SEGUNDA
                 </div>
 
                 <div class="ppe-box destaque">
-                    Informática / TI
+                    Programação
                 </div>
 
                 <div class="ppe-box">
-                    Português
+                    HTML e CSS
                 </div>
 
                 <div class="ppe-box">
@@ -263,79 +362,14 @@
                 </div>
 
                 <div class="ppe-box">
-                    Início leve focado em tecnologia
+                    Prática e fundamentos
                 </div>
 
+
+                <!-- TERÇA -->
 
                 <div class="ppe-day">
                     TERÇA
-                </div>
-
-                <div class="ppe-box">
-                    Matemática Básica
-                </div>
-
-                <div class="ppe-box">
-                    Exercícios
-                </div>
-
-                <div class="ppe-box destaque">
-                    Design
-                </div>
-
-                <div class="ppe-box">
-                    Criatividade e prática
-                </div>
-
-
-                <div class="ppe-day">
-                    QUARTA
-                </div>
-
-                <div class="ppe-box destaque">
-                    Informática / TI
-                </div>
-
-                <div class="ppe-box">
-                    Atualidades
-                </div>
-
-                <div class="ppe-box">
-                    Português
-                </div>
-
-                <div class="ppe-box">
-                    Alternância leve
-                </div>
-
-
-                <div class="ppe-day">
-                    QUINTA
-                </div>
-
-                <div class="ppe-box">
-                    Administração
-                </div>
-
-                <div class="ppe-box">
-                    Revisão
-                </div>
-
-                <div class="ppe-box destaque">
-                    Design
-                </div>
-
-                <div class="ppe-box">
-                    Aprendizado visual
-                </div>
-
-
-                <div class="ppe-day">
-                    SEXTA
-                </div>
-
-                <div class="ppe-box destaque">
-                    Informática / TI
                 </div>
 
                 <div class="ppe-box">
@@ -343,34 +377,111 @@
                 </div>
 
                 <div class="ppe-box">
-                    Leitura leve
+                    Português
+                </div>
+
+                <div class="ppe-box destaque">
+                    Inteligência Artificial
                 </div>
 
                 <div class="ppe-box">
-                    Fechamento da semana
+                    Tecnologia e aprendizado
                 </div>
 
+
+                <!-- QUARTA -->
+
+                <div class="ppe-day">
+                    QUARTA
+                </div>
+
+                <div class="ppe-box destaque">
+                    JavaScript
+                </div>
+
+                <div class="ppe-box">
+                    Banco de Dados
+                </div>
+
+                <div class="ppe-box">
+                    Inglês
+                </div>
+
+                <div class="ppe-box">
+                    Desenvolvimento técnico
+                </div>
+
+
+                <!-- QUINTA -->
+
+                <div class="ppe-day">
+                    QUINTA
+                </div>
+
+                <div class="ppe-box">
+                    Gestão e Negócios
+                </div>
+
+                <div class="ppe-box">
+                    Educação Financeira
+                </div>
+
+                <div class="ppe-box destaque">
+                    Programação
+                </div>
+
+                <div class="ppe-box">
+                    Aplicação dos conhecimentos
+                </div>
+
+
+                <!-- SEXTA -->
+
+                <div class="ppe-day">
+                    SEXTA
+                </div>
+
+                <div class="ppe-box">
+                    Atualidades
+                </div>
+
+                <div class="ppe-box">
+                    Inglês
+                </div>
+
+                <div class="ppe-box destaque">
+                    Inteligência Artificial
+                </div>
+
+                <div class="ppe-box">
+                    Novas tecnologias
+                </div>
+
+
+                <!-- SÁBADO -->
 
                 <div class="ppe-day">
                     SÁBADO
                 </div>
 
-                <div class="ppe-box">
-                    Projetos
+                <div class="ppe-box destaque">
+                    Projetos próprios
                 </div>
 
                 <div class="ppe-box">
-                    Revisão
+                    Prática de programação
                 </div>
 
                 <div class="ppe-box">
-                    Livre
+                    Revisão semanal
                 </div>
 
                 <div class="ppe-box">
-                    Sem pressão
+                    Desenvolvimento pessoal
                 </div>
 
+
+                <!-- DOMINGO -->
 
                 <div class="ppe-day">
                     DOMINGO
@@ -385,11 +496,11 @@
                 </div>
 
                 <div class="ppe-box">
-                    Livre
+                    Planejamento
                 </div>
 
                 <div class="ppe-box">
-                    Descanso mental
+                    Descanso e preparação
                 </div>
 
             </div>
@@ -400,6 +511,8 @@
 
 </main>
 
+
+<!-- RODAPÉ -->
 
 <footer>
 
@@ -461,16 +574,21 @@
 
 
 <!-- SUPABASE -->
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <!-- CONFIGURAÇÃO DO SUPABASE -->
+
 <script src="./js/supabase.js"></script>
 
 <!-- SISTEMA DO PORTFÓLIO -->
+
 <script src="./js/script.js"></script>
 
 
 <script>
+
+// ABRIR E FECHAR CARTÃO DE VISITA
 
 document.getElementById('toggle-card').addEventListener('click', function() {
 
@@ -495,6 +613,8 @@ document.getElementById('toggle-card').addEventListener('click', function() {
 });
 
 
+// ABRIR E FECHAR PPE
+
 document.getElementById('toggle-ppe').addEventListener('click', function() {
 
     const ppe =
@@ -516,6 +636,7 @@ document.getElementById('toggle-ppe').addEventListener('click', function() {
     }
 
 });
+
 
 // FRASES ROTATIVAS DA TELA INICIAL
 

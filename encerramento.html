@@ -1,0 +1,417 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Encerramento | Daniel Leal</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+
+    <style>
+        .encerramento-container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 0 25px;
+        }
+
+        .pagina-intro {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .pagina-intro h1 {
+            color: #101d32;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .pagina-intro p {
+            color: #666;
+            font-size: 15px;
+        }
+
+        .encerramento-card {
+            background: #fff;
+            padding: 35px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+            border-top: 4px solid #ffd700;
+        }
+
+        .encerramento-card h2 {
+            color: #101d32;
+            font-size: 22px;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #e5e8ed;
+        }
+
+        .encerramento-card p {
+            color: #444;
+            font-size: 15px;
+            line-height: 1.9;
+            text-align: justify;
+            margin-bottom: 16px;
+        }
+
+        .referencia-item,
+        .anexo-item {
+            padding: 15px;
+            background: #f4f6f9;
+            border-left: 4px solid #d5ae00;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .referencia-item h3,
+        .anexo-item h3 {
+            color: #182b48;
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        .referencia-item p,
+        .anexo-item p {
+            font-size: 13px;
+            margin: 0;
+            text-align: left;
+        }
+
+        .aviso {
+            background: #fff9df;
+            border: 1px solid #f0df9a;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 18px;
+        }
+
+        .aviso p {
+            font-size: 13px;
+            margin: 0;
+        }
+
+        .voltar {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 12px 22px;
+            background: #101d32;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .voltar:hover {
+            background: #263b59;
+            color: #ffd700;
+        }
+
+        .rodape-encerramento {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        @media (max-width: 600px) {
+            .encerramento-container {
+                margin: 30px auto;
+                padding: 0 15px;
+            }
+
+            .encerramento-card {
+                padding: 25px 20px;
+            }
+
+            .pagina-intro h1 {
+                font-size: 26px;
+            }
+
+            .encerramento-card h2 {
+                font-size: 19px;
+            }
+
+            .encerramento-card p {
+                font-size: 14px;
+            }
+        }
+        
+/* GALERIA DE ANEXOS */
+
+.galeria-anexos {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 25px;
+    width: 100%;
+}
+
+.anexo-card {
+    background: #f4f6f9;
+    border: 1px solid #e1e5eb;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.3s ease;
+    min-width: 0;
+}
+
+.anexo-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
+}
+
+.anexo-card img {
+    display: block !important;
+    width: 100% !important;
+    height: 190px !important;
+    max-width: 100% !important;
+    object-fit: cover;
+    border-radius: 0;
+}
+
+.anexo-card h3 {
+    color: #182b48;
+    font-size: 16px;
+    padding: 14px 14px 5px;
+}
+
+.anexo-card p {
+    color: #555;
+    font-size: 13px;
+    line-height: 1.6;
+    padding: 0 14px 16px;
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    .galeria-anexos {
+        grid-template-columns: 1fr;
+    }
+
+    .anexo-card img {
+        height: 200px !important;
+    }
+
+    .rodape-encerramento {
+    text-align: center;
+    margin: 35px 0;
+}
+
+.voltar {
+    display: inline-block;
+    padding: 13px 25px;
+    background: #101d32;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.voltar:hover {
+    background: #263b59;
+    color: #ffd700;
+    transform: translateY(-3px);
+}
+}
+
+.pagina-intro h1 {
+    color: #ffd700;
+}
+
+.pagina-intro p {
+    color: #e0e5ed;
+}
+
+    </style>
+</head>
+
+<body>
+<div class="rodape-encerramento">
+    <a href="./index.html" class="voltar">
+        ← Voltar ao Portfólio
+    </a>
+</div>
+    <main class="encerramento-container">
+
+        <header class="pagina-intro">
+
+            <h1>Encerramento</h1>
+
+            <p>
+                Reflexões, fontes de pesquisa e registros da minha trajetória.
+            </p>
+
+        </header>
+
+        <!-- CONSIDERAÇÕES FINAIS -->
+
+        <section class="encerramento-card">
+
+            <h2>Considerações Finais</h2>
+
+            <p>
+                A construção deste portfólio foi uma oportunidade de reunir
+                e apresentar um pouco da minha trajetória, dos conhecimentos
+                adquiridos e das experiências desenvolvidas durante minha
+                formação em Informática para Internet.
+            </p>
+
+            <p>
+                Ao longo desse período, pude ampliar meus conhecimentos em
+                tecnologia, programação, desenvolvimento web e banco de dados,
+                além de desenvolver habilidades como organização, criatividade,
+                responsabilidade e pensamento lógico. As atividades e os
+                projetos realizados contribuíram para minha aprendizagem e
+                me ajudaram a compreender melhor como os conhecimentos
+                estudados podem ser aplicados na prática.
+            </p>
+
+            <p>
+                Também foi um período importante para refletir sobre meus
+                objetivos pessoais e profissionais. Percebi que ainda tenho
+                muito a aprender e desenvolver, mas reconheço minha evolução
+                e a importância de continuar buscando novos conhecimentos
+                e oportunidades.
+            </p>
+
+            <p>
+                Pretendo seguir aprimorando minhas habilidades, explorando
+                novas tecnologias e construindo minha trajetória nas áreas
+                de desenvolvimento, administração e empreendedorismo.
+            </p>
+
+            <p>
+                Por fim, considero este portfólio um registro importante da
+                minha caminhada, dos desafios enfrentados e das conquistas
+                alcançadas até aqui. Mais do que apresentar atividades,
+                ele representa uma etapa da minha formação e o início de
+                novos objetivos para o futuro.
+            </p>
+
+        </section>
+
+        <!-- REFERÊNCIAS -->
+
+        <section class="encerramento-card">
+
+            <h2>Referências</h2>
+
+            <p>
+                Nesta seção serão apresentados os materiais e as fontes
+                utilizados como apoio para a realização das pesquisas,
+                atividades e projetos presentes neste portfólio.
+            </p>
+
+            <div class="referencia-item">
+
+                <h3>Materiais didáticos</h3>
+
+                <p>
+                    Apostilas, conteúdos e materiais de estudo utilizados
+                    durante as aulas e atividades da formação.
+                </p>
+
+            </div>
+
+            <div class="referencia-item">
+
+                <h3>Pesquisas e conteúdos digitais</h3>
+
+                <p>
+                    Sites, artigos e materiais consultados durante a
+                    elaboração das pesquisas e atividades.
+                </p>
+
+            </div>
+
+            <div class="aviso">
+
+                <p>
+                    As referências específicas deverão ser identificadas
+                    conforme as fontes realmente utilizadas em cada atividade.
+                </p>
+
+            </div>
+
+        </section>
+
+    
+<!-- ANEXOS -->
+
+<section class="encerramento-card">
+
+    <h2>Anexos — Momentos marcantes do ano</h2>
+
+    <p>
+        Nesta seção estão reunidos quatro registros de momentos
+        especiais vivenciados durante o ano, incluindo atividades,
+        experiências e momentos de integração que fizeram parte
+        da minha trajetória.
+    </p>
+
+    <div class="galeria-anexos">
+
+        <div class="anexo-card">
+
+            <img src="./img/anexo%20senai.jpeg"
+                 alt="Registro de atividade do SENAI e SENAI">
+
+            <h3>Experiência no SENAI e SESI</h3>
+
+            <p>
+                Registro de um momento especial relacionado
+                às atividades e experiências vivenciadas no SENAI.
+            </p>
+
+        </div>
+
+        <div class="anexo-card">
+
+            <img src="./img/anexo%20trote%202.jpeg"
+                 alt="Registro do segundo momento de integração">
+
+            <h3>Momento de Integração</h3>
+
+            <p>
+                Um momento de descontração e interação
+                com os colegas durante o período escolar.
+            </p>
+
+        </div>
+
+        <div class="anexo-card">
+
+            <img src="./img/anexo%20trote.jpeg"
+                 alt="Registro do trote escolar">
+
+            <h3>Trote Escolar</h3>
+
+            <p>
+                Uma experiência de integração e convivência
+                com os colegas, marcando a trajetória escolar.
+            </p>
+
+        </div>
+
+        <div class="anexo-card">
+
+            <img src="./img/anexo%20visita%20virtex.jpeg"
+                 alt="Registro da visita à Virtex">
+
+            <h3>Visita à Virtex</h3>
+
+            <p>
+                Registro de uma experiência de visita,
+                conhecendo um ambiente diferente e ampliando
+                os conhecimentos além da sala de aula.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
